@@ -32,8 +32,9 @@ L'idea è la fiancata di un furgone da lavoro: blu tuta, giallo cantiere, scritt
 ## Mestieri che scorrono nel titolo
 Il primo mestiere ("idraulico") è scritto in `index.html`, dentro l'`<h1>`. Gli altri sono in `CONFIG.mestieriAnimati` in `js/main.js`: aggiungi o togli parole a piacere (devono andare bene dopo "un": un elettricista, un falegname...). Durata e pausa si cambiano nelle costanti `DURATA` e `PAUSA` del codice. Chi ha attivato "riduci movimento" nel telefono vede solo "idraulico", fermo.
 
-## Come mettere il logo
-Copia il file in `assets/` e cambia `src` (e `width`/`height`) dell'immagine nell'header di `index.html` e `privacy.html`. Cambia anche l'icona (`<link rel="icon">`). Per l'anteprima sui social aggiungi `og:image` (vedi commento in `index.html`).
+## Logo
+Il logo originale è `assets/logo2.png` (sfondo trasparente, 360 px). Da lì sono ricavati: `logo-marchio.png` (solo il simbolo, nell'header), `logo-completo.png` (simbolo e scritta, senza "STUDIO DIGITALE"), `favicon.png` e `og-image.png` (anteprima sui social, 1200x630). `logo.png` e `logo2.png` non sono usati dal sito.
+Per cambiare logo: rifai questi quattro file, tenendo gli stessi nomi, oppure cambia `src` e `width`/`height` nell'header di `index.html` e `privacy.html`. Se il file nuovo è molto più grande, ridimensionalo per l'header (altezza circa 80 px).
 
 ## Come aggiungere una demo
 In `index.html`, sezione "Esempi di siti", c'è un commento con i passi. In breve: metti l'immagine in `assets/` (WebP, circa 800 px), copia una `<article class="demo">`, sostituisci il riquadro con un `<img ... loading="lazy">` e il pulsante "Presto online" con un link alla demo.
