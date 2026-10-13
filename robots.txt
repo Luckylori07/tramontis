@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://luckylori07.github.io/tramontis/sitemap.xml
