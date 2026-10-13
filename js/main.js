@@ -114,13 +114,15 @@ var CONFIG = {
     var corrente = 0;
     var timer = null;
 
+    // Larghezza della targhetta = parola + il suo respiro a sinistra e a destra.
     function misura() {
-      larghezze = parole.map(function (el) { return el.offsetWidth; });
+      var cs = window.getComputedStyle(box);
+      var bordi = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+      larghezze = parole.map(function (el) { return Math.ceil(el.offsetWidth + bordi); });
     }
 
     // Prima di attivare il layout animato la parola è in linea: la misuro, poi la fisso.
-    var larghezzaIniziale = parole[0].offsetWidth;
-    box.style.width = larghezzaIniziale + "px";
+    box.style.width = box.offsetWidth + "px";
     box.classList.add("pronto");
     misura();
     box.style.width = larghezze[0] + "px";
@@ -142,10 +144,13 @@ var CONFIG = {
     riservaAltezza();
 
     var rid;
+    function rimisura() { misura(); riservaAltezza(); }
     window.addEventListener("resize", function () {
       clearTimeout(rid);
-      rid = setTimeout(function () { misura(); riservaAltezza(); }, 150);
+      rid = setTimeout(rimisura, 150);
     });
+    // Il carattere del sito può arrivare dopo la prima pagina: appena c'è, rifaccio le misure.
+    if (doc.fonts && doc.fonts.ready) { doc.fonts.ready.then(rimisura); }
 
     function avanti() {
       var da = parole[corrente];

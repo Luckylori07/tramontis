@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tramontis – Siti web per artigiani a Varese e provincia</title>
   <meta name="description" content="Tramontis fa siti web semplici e veloci per idraulici, elettricisti, giardinieri, imbianchini e falegnami di Varese e provincia. Prezzo fisso, tutto pronto.">
-  <meta name="theme-color" content="#1d2b3a">
+  <meta name="theme-color" content="#1b3f8b">
   <link rel="canonical" href="https://luckylori07.github.io/tramontis/">
   <link rel="icon" href="assets/logo-placeholder.svg" type="image/svg+xml">
 
@@ -17,6 +17,7 @@
   <meta property="og:description" content="Siti web semplici e veloci per artigiani e piccole imprese di Varese. Prezzo fisso, tutto pronto.">
   <meta property="og:url" content="https://luckylori07.github.io/tramontis/">
 
+  <link rel="preload" href="assets/fonts/archivo-latin-wdth.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Dati strutturati. Vanno aggiornati A MANO (non leggono la config in main.js).
@@ -69,9 +70,8 @@
     <!-- 2. HERO -->
     <section class="hero">
       <div class="wrap">
-        <p class="sopra">Siti web per artigiani e piccole imprese · Varese e provincia</p>
         <h1>Quando un cliente cerca un <span class="rotante" id="rotante"><span class="parola attiva">idraulico</span></span> a Varese, deve trovare te.</h1>
-        <p class="lede">Idraulico, elettricista, giardiniere, imbianchino, falegname: facciamo il tuo sito semplice, veloce e pronto da usare. Tu pensi al lavoro, al resto pensiamo noi.</p>
+        <p class="lede">Facciamo siti web per artigiani e piccole imprese di Varese e provincia: semplici, veloci, pronti da usare. Tu pensi al lavoro, al resto pensiamo noi.</p>
         <div class="cta-riga">
           <a class="btn btn-primario" data-href="mailto" href="mailto:tramontis.info@gmail.com?subject=Richiesta%20preventivo%20dal%20sito">Scrivici una email</a>
           <a class="btn btn-secondario" href="#contatti">Chiedi un preventivo</a>
@@ -89,20 +89,20 @@
     <section class="sezione alt" id="problema">
       <div class="wrap">
         <h2>Senza un sito, i clienti chiamano un altro</h2>
-        <ul class="griglia punti">
-          <li class="scheda">
+        <ul class="problemi">
+          <li>
             <h3>Cercano su Google</h3>
             <p>Chi ha bisogno di un idraulico cerca su Google e chiama il primo che trova.</p>
           </li>
-          <li class="scheda">
+          <li>
             <h3>Non lo sai nemmeno</h3>
             <p>Se non ci sei, il cliente chiama un altro. Tu non sai che ti ha cercato.</p>
           </li>
-          <li class="scheda">
+          <li>
             <h3>Il furgone non basta</h3>
             <p>Il numero scritto sul furgone non lo trovi la sera, quando serve a chi ha un guasto.</p>
           </li>
-          <li class="scheda">
+          <li>
             <h3>Il passaparola si ferma</h3>
             <p>Anche chi ha sentito parlare di te da un amico, spesso ti cerca online prima di chiamare.</p>
           </li>
@@ -115,20 +115,20 @@
       <div class="wrap">
         <h2>Cosa facciamo per te</h2>
         <p class="intro">Ti consegniamo tutto pronto. Non devi installare niente e non devi capire di computer.</p>
-        <ul class="griglia">
-          <li class="scheda">
+        <ul class="righe">
+          <li>
             <h3>Un sito semplice e veloce</h3>
             <p>Dice chi sei, cosa fai, dove lavori e come chiamarti. Si apre subito e si vede bene dal telefono.</p>
           </li>
-          <li class="scheda">
+          <li>
             <h3>La scheda Google della tua attività</h3>
             <p>È quella con la mappa e il numero che compare quando si cerca su Google. La creiamo o la sistemiamo insieme a te.</p>
           </li>
-          <li class="scheda">
+          <li>
             <h3>Pulsante WhatsApp e chiamata</h3>
             <p>Il cliente ti scrive o ti chiama con un tocco, senza cercare il numero.</p>
           </li>
-          <li class="scheda">
+          <li>
             <h3>Tutto consegnato pronto</h3>
             <p>Quando lo ricevi è già online e funziona. Tu devi solo dirci cosa vuoi farci scrivere.</p>
           </li>
@@ -143,7 +143,7 @@
       <div class="wrap">
         <h2>Tre pacchetti, prezzo fisso</h2>
         <p class="intro">Sai quanto spendi prima di cominciare. Niente sorprese.</p>
-        <div class="griglia pacchetti">
+        <div class="pacchetti">
 
           <article class="pacchetto">
             <h3>BASE</h3>
@@ -212,7 +212,7 @@
       <div class="wrap">
         <h2>Esempi di siti</h2>
         <p class="intro">Sono esempi che stiamo preparando noi, non siti di clienti veri.</p>
-        <div class="griglia demo-griglia">
+        <div class="demo-griglia">
           <article class="demo">
             <div class="demo-img" role="img" aria-label="Spazio per l’immagine della demo per idraulici">Demo in arrivo</div>
             <div class="demo-testo">
@@ -238,7 +238,7 @@
       <div class="wrap">
         <h2>Chi siamo</h2>
         <p class="intro">Siamo tre ragazzi di Varese. Se serve, veniamo a trovarti.</p>
-        <ul class="griglia persone">
+        <ul class="persone">
           <!-- FOTO: sostituisci <div class="foto"> con <img class="foto" src="assets/NOME.webp" alt="Nome Cognome" width="240" height="240" loading="lazy"> -->
           <li class="persona">
             <div class="foto" role="img" aria-label="Foto di Lorenzo Giarnetti (da aggiungere)">Foto</div>
@@ -303,7 +303,7 @@
             <a class="btn btn-primario" data-href="mailto" href="mailto:tramontis.info@gmail.com?subject=Richiesta%20preventivo%20dal%20sito">Scrivici una email</a>
             <a class="btn btn-secondario" data-href="tel" data-show="telefono" href="#contatti" hidden>Chiama ora</a>
           </div>
-          <p class="riga-email">Email: <a data-href="mailto" href="mailto:tramontis.info@gmail.com?subject=Richiesta%20preventivo%20dal%20sito"><span data-cfg="email">tramontis.info@gmail.com</span></a></p>
+          <a class="lettering" data-href="mailto" href="mailto:tramontis.info@gmail.com?subject=Richiesta%20preventivo%20dal%20sito"><span data-cfg="email">tramontis.info@gmail.com</span></a>
         </div>
 
         <form id="form-contatti" class="form" novalidate>

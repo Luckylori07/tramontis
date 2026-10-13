@@ -9,6 +9,7 @@ css/style.css   stile
 js/main.js      DATI in cima (CONFIG) + codice del sito e del form
 assets/         logo, foto, immagini delle demo
 sitemap.xml, robots.txt
+.claude/skills/ guida di design usata per l'aspetto del sito
 ```
 
 ## Come modificare i dati
@@ -24,6 +25,9 @@ Apri `js/main.js`. In cima c'è il blocco `CONFIG`: email, WhatsApp, telefono, m
 - `canonical`, `og:url`, `sitemap.xml`, `robots.txt`: ora puntano a `https://luckylori07.github.io/tramontis/`. Se usi un dominio tuo, sostituiscilo ovunque.
 - `privacy.html`: il nome del servizio del form.
 - Il link di fallback email è scritto anche in `index.html` (`mailto:`), così funziona anche senza JavaScript.
+
+## Aspetto
+L'idea è la fiancata di un furgone da lavoro: blu tuta, giallo cantiere, scritte grosse e strette. I colori sono le variabili in cima a `css/style.css` (`:root`). Il carattere è Archivo (licenza OFL, file e licenza in `assets/fonts/`), un solo file che serve sia per i titoli stretti sia per il testo.
 
 ## Mestieri che scorrono nel titolo
 Il primo mestiere ("idraulico") è scritto in `index.html`, dentro l'`<h1>`. Gli altri sono in `CONFIG.mestieriAnimati` in `js/main.js`: aggiungi o togli parole a piacere (devono andare bene dopo "un": un elettricista, un falegname...). Durata e pausa si cambiano nelle costanti `DURATA` e `PAUSA` del codice. Chi ha attivato "riduci movimento" nel telefono vede solo "idraulico", fermo.
