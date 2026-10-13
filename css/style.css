@@ -79,6 +79,21 @@ a { color: var(--arancio-scuro); }
 .header-cta { display: flex; gap: 8px; }
 .header .btn-secondario { color: #fff; border-color: #fff; }
 
+/* ---------- Titolo: mestiere che scorre ---------- */
+.rotante { color: var(--arancio); }
+.rotante.pronto {
+  position: relative; display: inline-block; vertical-align: top;
+  height: 1.4em; padding: 0 0 .2em; margin: 0 0 -.2em; /* spazio sotto per le lettere con la coda, senza spostare il testo */
+  overflow: hidden;
+  transition: width .65s cubic-bezier(.7, 0, .2, 1);
+}
+.rotante.misura { transition: none; }
+.rotante.pronto .parola {
+  position: absolute; left: 0; top: 0; white-space: nowrap;
+  opacity: 0; transform: translateY(130%);
+}
+.rotante.pronto .parola.attiva { opacity: 1; transform: none; }
+
 /* ---------- Sezioni ---------- */
 .sezione { padding: 48px 0; }
 .sezione.alt { background: var(--fondo-alt); }

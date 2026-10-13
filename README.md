@@ -25,6 +25,9 @@ Apri `js/main.js`. In cima c'è il blocco `CONFIG`: email, WhatsApp, telefono, m
 - `privacy.html`: il nome del servizio del form.
 - Il link di fallback email è scritto anche in `index.html` (`mailto:`), così funziona anche senza JavaScript.
 
+## Mestieri che scorrono nel titolo
+Il primo mestiere ("idraulico") è scritto in `index.html`, dentro l'`<h1>`. Gli altri sono in `CONFIG.mestieriAnimati` in `js/main.js`: aggiungi o togli parole a piacere (devono andare bene dopo "un": un elettricista, un falegname...). Durata e pausa si cambiano nelle costanti `DURATA` e `PAUSA` del codice. Chi ha attivato "riduci movimento" nel telefono vede solo "idraulico", fermo.
+
 ## Come mettere il logo
 Copia il file in `assets/` e cambia `src` (e `width`/`height`) dell'immagine nell'header di `index.html` e `privacy.html`. Cambia anche l'icona (`<link rel="icon">`). Per l'anteprima sui social aggiungi `og:image` (vedi commento in `index.html`).
 

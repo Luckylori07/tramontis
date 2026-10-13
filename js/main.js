@@ -31,6 +31,9 @@ var CONFIG = {
   dataPrivacy: "[DATA DA COMPILARE]",
   conservazioneDati: "[PERIODO DI CONSERVAZIONE DA COMPILARE]",
 
+  // Mestieri che scorrono nel titolo, dopo "idraulico" (scritto in index.html). Chi legge vede il suo.
+  mestieriAnimati: ["elettricista", "giardiniere", "imbianchino", "falegname"],
+
   // Ruoli dei tre fondatori (i nomi sono scritti in index.html)
   ruoli: [
     "[RUOLO DA COMPILARE]",
@@ -84,6 +87,96 @@ var CONFIG = {
   all("[data-show]").forEach(function (el) {
     if (available[el.getAttribute("data-show")]) { el.hidden = false; }
   });
+
+  /* ---------- Titolo: il mestiere scorre verso l'alto ---------- */
+  (function () {
+    var box = doc.getElementById("rotante");
+    var titolo = box && box.parentNode;
+    if (!box || !window.Element || !box.animate) { return; }
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
+
+    var DURATA = 650;      // millisecondi per lo scorrimento
+    var PAUSA = 2200;      // millisecondi in cui il mestiere resta fermo
+    var EASING = "cubic-bezier(.7, 0, .2, 1)";
+
+    var parole = [box.firstElementChild];
+    (CONFIG.mestieriAnimati || []).forEach(function (testo) {
+      var el = doc.createElement("span");
+      el.className = "parola";
+      el.textContent = testo;
+      el.setAttribute("aria-hidden", "true"); // chi usa lo screen reader sente solo la prima parola
+      box.appendChild(el);
+      parole.push(el);
+    });
+    if (parole.length < 2) { return; }
+
+    var larghezze = [];
+    var corrente = 0;
+    var timer = null;
+
+    function misura() {
+      larghezze = parole.map(function (el) { return el.offsetWidth; });
+    }
+
+    // Prima di attivare il layout animato la parola è in linea: la misuro, poi la fisso.
+    var larghezzaIniziale = parole[0].offsetWidth;
+    box.style.width = larghezzaIniziale + "px";
+    box.classList.add("pronto");
+    misura();
+    box.style.width = larghezze[0] + "px";
+
+    // Riserva l'altezza del titolo più alta (a capo diversi con parole diverse): la pagina non salta.
+    function riservaAltezza() {
+      titolo.style.minHeight = "";
+      box.classList.add("misura");
+      var max = 0;
+      larghezze.forEach(function (w) {
+        box.style.width = w + "px";
+        max = Math.max(max, titolo.offsetHeight);
+      });
+      box.style.width = larghezze[corrente] + "px";
+      titolo.style.minHeight = max + "px";
+      void box.offsetWidth;
+      box.classList.remove("misura");
+    }
+    riservaAltezza();
+
+    var rid;
+    window.addEventListener("resize", function () {
+      clearTimeout(rid);
+      rid = setTimeout(function () { misura(); riservaAltezza(); }, 150);
+    });
+
+    function avanti() {
+      var da = parole[corrente];
+      corrente = (corrente + 1) % parole.length;
+      var a = parole[corrente];
+      var opzioni = { duration: DURATA, easing: EASING };
+
+      da.classList.remove("attiva");
+      a.classList.add("attiva");
+      da.animate([{ transform: "none", opacity: 1 }, { transform: "translateY(-130%)", opacity: 0 }], opzioni);
+      a.animate([{ transform: "translateY(130%)", opacity: 0 }, { transform: "none", opacity: 1 }], opzioni);
+      box.style.width = larghezze[corrente] + "px";
+    }
+
+    function ciclo() {
+      timer = setTimeout(function () {
+        if (!doc.hidden) { avanti(); }
+        ciclo();
+      }, PAUSA + DURATA);
+    }
+
+    // Si ferma quando il titolo non si vede (risparmia batteria) e riparte quando torna visibile.
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (voci) {
+        clearTimeout(timer);
+        if (voci[0].isIntersecting) { ciclo(); }
+      }).observe(titolo);
+    } else {
+      ciclo();
+    }
+  })();
 
   /* ---------- Form ---------- */
   var form = doc.getElementById("form-contatti");
