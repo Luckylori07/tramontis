@@ -34,11 +34,11 @@ var CONFIG = {
   // Mestieri che scorrono nel titolo, dopo "idraulico" (scritto in index.html). Chi legge vede il suo.
   mestieriAnimati: ["elettricista", "giardiniere", "imbianchino", "falegname"],
 
-  // Ruoli dei tre fondatori (i nomi sono scritti in index.html)
-  ruoli: [
-    "[RUOLO DA COMPILARE]",
-    "[RUOLO DA COMPILARE]",
-    "[RUOLO DA COMPILARE]"
+  // Competenze dei tre fondatori, una breve frase ciascuno (i nomi sono scritti in index.html)
+  competenze: [
+    "[COMPETENZE DA COMPILARE]",
+    "[COMPETENZE DA COMPILARE]",
+    "[COMPETENZE DA COMPILARE]"
   ]
 };
 /* ===================== FINE DATI. Sotto: codice. ===================== */
@@ -72,8 +72,8 @@ var CONFIG = {
     if (typeof v === "string" && v) { el.textContent = v; }
   });
 
-  all("[data-role]").forEach(function (el) {
-    var v = CONFIG.ruoli[Number(el.getAttribute("data-role"))];
+  all("[data-competenze]").forEach(function (el) {
+    var v = CONFIG.competenze[Number(el.getAttribute("data-competenze"))];
     if (v) { el.textContent = v; }
   });
 
