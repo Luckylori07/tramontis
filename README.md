@@ -18,7 +18,7 @@ Apri `js/main.js`. In cima c'è il blocco `CONFIG`: email, WhatsApp, telefono, m
 
 - **WhatsApp:** scrivi il numero solo con cifre e prefisso, per esempio `393331234567`. Finché è vuoto i pulsanti WhatsApp restano nascosti.
 - **Telefono:** se lo compili compare il pulsante "Chiama ora".
-- **Form:** crea un modulo su [Formspree](https://formspree.io), copia l'indirizzo (`https://formspree.io/f/xxxxxxxx`) in `formEndpoint`. Il campo antispam `_gotcha` è già nel modulo.
+- **Form:** crea un modulo su [Formspree](https://formspree.io) con l'email che deve ricevere le richieste (`tramontis.info@gmail.com`), copia l'indirizzo (`https://formspree.io/f/xxxxxxxx`) in `formEndpoint`, poi manda una richiesta di prova e conferma l'email dal messaggio che Formspree ti scrive. Il campo antispam `_gotcha` è già nel modulo. Il cliente deve scrivere telefono o email (ne basta uno): se lascia l'email, "Rispondi" nella tua casella risponde a lui.
 
 **Da cambiare a mano, perché non leggono la config:**
 - `index.html`: blocco JSON-LD nella `<head>` (telefono, P. IVA, indirizzo) e i testi `[DA COMPILARE]` delle FAQ.

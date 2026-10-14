@@ -206,27 +206,43 @@ var CONFIG = {
     field.setAttribute("aria-invalid", message ? "true" : "false");
   }
 
+  // Telefono o email: basta uno dei due. Quello che viene scritto però deve essere giusto.
   function validate() {
-    var firstBad = null;
-    var rules = {
-      nome: function (v) { return v.trim().length < 2 ? "Scrivi il tuo nome." : ""; },
-      telefono: function (v) {
-        return v.replace(/\D/g, "").length < 6 ? "Scrivi un numero di telefono valido." : "";
-      },
-      mestiere: function (v) { return v === "" ? "Scegli il tuo mestiere." : ""; }
-    };
-    Object.keys(rules).forEach(function (name) {
-      var field = form.elements[name];
-      var msg = rules[name](field.value);
-      fieldError(field, msg);
-      if (msg && !firstBad) { firstBad = field; }
+    var f = form.elements;
+    var tel = f.telefono.value.trim();
+    var mail = f.email.value.trim();
+    var gruppo = doc.getElementById("contatto-errore");
+
+    var errori = [
+      [f.nome, f.nome.value.trim().length < 2 ? "Scrivi il tuo nome." : ""],
+      [f.telefono, tel && tel.replace(/\D/g, "").length < 6 ? "Il numero non sembra giusto. Controllalo." : ""],
+      [f.email, mail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail) ? "L'email non sembra giusta. Controllala." : ""],
+      [f.mestiere, f.mestiere.value === "" ? "Scegli il tuo mestiere." : ""]
+    ];
+
+    var manca = !tel && !mail;
+    gruppo.textContent = manca ? "Scrivi almeno un contatto: telefono o email." : "";
+    if (manca) { errori[1][1] = " "; errori[2][1] = " "; } // segna i due campi, il messaggio è quello del gruppo
+
+    var primo = null;
+    errori.forEach(function (voce) {
+      fieldError(voce[0], voce[1].trim());
+      voce[0].setAttribute("aria-invalid", voce[1] ? "true" : "false");
+      if (voce[1] && !primo) { primo = voce[0]; }
     });
-    if (firstBad) { firstBad.focus(); }
-    return !firstBad;
+    if (primo) { primo.focus(); }
+    return !primo;
   }
 
-  ["nome", "telefono", "mestiere"].forEach(function (name) {
-    form.elements[name].addEventListener("input", function () { fieldError(this, ""); });
+  ["nome", "telefono", "email", "mestiere"].forEach(function (name) {
+    form.elements[name].addEventListener("input", function () {
+      fieldError(this, "");
+      if (name === "telefono" || name === "email") {
+        doc.getElementById("contatto-errore").textContent = "";
+        form.elements.telefono.setAttribute("aria-invalid", "false");
+        form.elements.email.setAttribute("aria-invalid", "false");
+      }
+    });
   });
 
   form.addEventListener("submit", function (e) {
@@ -249,9 +265,15 @@ var CONFIG = {
     button.disabled = true;
     button.textContent = "Invio in corso…";
 
+    // Telefono o email lasciati vuoti non vanno spediti (Formspree usa "email" come indirizzo di risposta).
+    var dati = new FormData(form);
+    ["telefono", "email"].forEach(function (k) {
+      if (!String(dati.get(k)).trim()) { dati.delete(k); }
+    });
+
     fetch(CONFIG.formEndpoint, {
       method: "POST",
-      body: new FormData(form),
+      body: dati,
       headers: { Accept: "application/json" }
     })
       .then(function (res) {
