@@ -20,7 +20,7 @@ var CONFIG = {
 
   // Indirizzo del servizio per il form (Formspree o simile). Esempio: "https://formspree.io/f/xxxxxxxx".
   // Se contiene [DA COMPILARE] il form mostra un messaggio e rimanda all'email.
-  formEndpoint: "https://formspree.io/f/[DA COMPILARE]",
+  formEndpoint: "https://formspree.io/f/xwlvrzop",
 
   // Footer e privacy
   ragioneSociale: "Tramontis",
