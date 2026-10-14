@@ -96,6 +96,17 @@ a { color: var(--blu); }
 .marchio img { display: block; }
 .header-cta { display: flex; gap: 8px; }
 
+/* Schermi stretti: il pulsante ha un testo più lungo, marchio e pulsante si fanno più piccoli */
+@media (max-width: 479px) {
+  .header-in { gap: 8px; }
+  .marchio { gap: 7px; font-size: .8rem; letter-spacing: .1em; }
+  .marchio img { width: 45px; height: auto; }
+  .header-cta .btn-sm { padding: 6px 12px; font-size: .9rem; line-height: 1.15; white-space: nowrap; }
+}
+@media (max-width: 359px) {
+  .header-cta .btn-sm { white-space: normal; }
+}
+
 /* ---------- Hero: il pannello del furgone ---------- */
 .hero { background: var(--blu); color: #fff; padding: 40px 0 0; }
 .hero h1 { margin-bottom: .45em; }
