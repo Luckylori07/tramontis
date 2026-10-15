@@ -37,7 +37,7 @@ Il logo originale è `assets/logo2.png` (sfondo trasparente, 360 px). Da lì son
 Per cambiare logo: rifai questi quattro file, tenendo gli stessi nomi, oppure cambia `src` e `width`/`height` nell'header di `index.html` e `privacy.html`. Se il file nuovo è molto più grande, ridimensionalo per l'header (altezza circa 80 px).
 
 ## Come aggiungere una demo
-In `index.html`, sezione "Esempi di siti", c'è un commento con i passi. In breve: metti l'immagine in `assets/` (WebP, circa 800 px), copia una `<article class="demo">`, sostituisci il riquadro con un `<img ... loading="lazy">` e il pulsante "Presto online" con un link alla demo.
+In `index.html` la sezione "Esempi di siti" è **commentata** (nascosta) finché le demo non sono pronte: cerca `DEMO-OFF` e cancella le due righe che la contengono (le istruzioni sono nel commento sopra). Sopra la sezione c'è un commento con i passi. In breve: metti l'immagine in `assets/` (WebP, circa 800 px), copia una `<article class="demo">`, sostituisci il riquadro con un `<img ... loading="lazy">` e il pulsante "Presto online" con un link alla demo.
 
 ## Come pubblicare su GitHub Pages
 1. Su GitHub: **Settings → Pages**.
