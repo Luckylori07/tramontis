@@ -32,14 +32,7 @@ var CONFIG = {
   conservazioneDati: "[PERIODO DI CONSERVAZIONE DA COMPILARE]",
 
   // Mestieri che scorrono nel titolo, dopo "idraulico" (scritto in index.html). Chi legge vede il suo.
-  mestieriAnimati: ["elettricista", "giardiniere", "imbianchino", "falegname"],
-
-  // Competenze dei tre fondatori, una breve frase ciascuno (i nomi sono scritti in index.html)
-  competenze: [
-    "[COMPETENZE DA COMPILARE]",
-    "[COMPETENZE DA COMPILARE]",
-    "[COMPETENZE DA COMPILARE]"
-  ]
+  mestieriAnimati: ["elettricista", "giardiniere", "imbianchino", "falegname"]
 };
 /* ===================== FINE DATI. Sotto: codice. ===================== */
 
@@ -70,11 +63,6 @@ var CONFIG = {
   all("[data-cfg]").forEach(function (el) {
     var v = CONFIG[el.getAttribute("data-cfg")];
     if (typeof v === "string" && v) { el.textContent = v; }
-  });
-
-  all("[data-competenze]").forEach(function (el) {
-    var v = CONFIG.competenze[Number(el.getAttribute("data-competenze"))];
-    if (v) { el.textContent = v; }
   });
 
   all("[data-href]").forEach(function (el) {

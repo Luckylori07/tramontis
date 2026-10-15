@@ -14,14 +14,14 @@ sitemap.xml, robots.txt
 
 ## Come modificare i dati
 
-Apri `js/main.js`. In cima c'è il blocco `CONFIG`: email, WhatsApp, telefono, messaggio WhatsApp, indirizzo del form, dati della privacy, competenze dei fondatori. Sostituisci ogni `[DA COMPILARE]`.
+Apri `js/main.js`. In cima c'è il blocco `CONFIG`: email, WhatsApp, telefono, messaggio WhatsApp, indirizzo del form, dati della privacy. Sostituisci ogni `[DA COMPILARE]`.
 
 - **WhatsApp:** scrivi il numero solo con cifre e prefisso, per esempio `393331234567`. Finché è vuoto i pulsanti WhatsApp restano nascosti.
 - **Telefono:** se lo compili compare il pulsante "Chiama ora".
 - **Form:** crea un modulo su [Formspree](https://formspree.io) con l'email che deve ricevere le richieste (`tramontis.info@gmail.com`), copia l'indirizzo (`https://formspree.io/f/xxxxxxxx`) in `formEndpoint`, poi manda una richiesta di prova e conferma l'email dal messaggio che Formspree ti scrive. Il campo antispam `_gotcha` è già nel modulo. Il cliente deve scrivere telefono o email (ne basta uno): se lascia l'email, "Rispondi" nella tua casella risponde a lui.
 
 **Da cambiare a mano, perché non leggono la config:**
-- `index.html`: blocco JSON-LD nella `<head>` (telefono, P. IVA, indirizzo) e i testi `[DA COMPILARE]` delle FAQ.
+- `index.html`: blocco JSON-LD nella `<head>` (telefono, P. IVA, indirizzo).
 - `canonical`, `og:url`, `sitemap.xml`, `robots.txt`: ora puntano a `https://luckylori07.github.io/tramontis/`. Se usi un dominio tuo, sostituiscilo ovunque.
 - `privacy.html`: il nome del servizio del form.
 - Il link di fallback email è scritto anche in `index.html` (`mailto:`), così funziona anche senza JavaScript.

@@ -164,6 +164,11 @@ a { color: var(--blu); }
 .passi h3 { margin-bottom: .15em; }
 .passi p { margin: 0; }
 
+/* ---------- Tre mesi di modifiche (sotto i passi) ---------- */
+.tremesi { margin-top: 40px; padding: 22px 20px; background: var(--giallo); border: 2px solid var(--notte); border-radius: 6px; }
+.tremesi h3 { font-size: 1.8rem; margin-bottom: .25em; }
+.tremesi p { margin: 0; max-width: 40em; font-weight: 500; }
+
 /* ---------- Demo ---------- */
 .demo-griglia { display: grid; gap: 28px; margin-top: 32px; }
 .demo { border: 2px solid var(--notte); border-radius: 6px; overflow: hidden; background: var(--bianco); }
